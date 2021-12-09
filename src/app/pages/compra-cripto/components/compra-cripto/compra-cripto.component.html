@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<main @enterState>
+      <div class="container py-4">
+
+            <div class="p-5 mb-4 bg-light rounded-3">
+                  <h1 class="text-center mb-3">Comprar Criptos</h1>
+
+                  <div *ngIf="mostrar_1">   
+                        <h4>Seleccione un Vendedor</h4>                   
+                        <button *ngFor="let user of users" [appImage]="user" class="boton-img" style="color: white; font-weight: 900;"
+                        value="{{user.email}}" (click)="getSeller(user)">{{user.email}}</button>
+                  </div>
+                  
+
+                  <br>
+
+                  <div class="container-fluid py-5" *ngIf="mostrar_2">
+                        <button class="w-100 btn btn-lg btn-danger" (click)="viewSeller()">
+                              Seleccionar otro vendedor
+                        </button>
+
+                        <br><br>
+
+                        <h4 class="text-center mb-3">Criptos del Vendedor: {{currentUser.email}}</h4>
+                        <br>
+                        <table class="table table-hover">
+                              <thead>
+                                    <tr>
+                                          <th scope="col" class="text-center mb-3">Cripto</th>
+                                          <th scope="col" class="text-center mb-3">Comision</th>
+                                          <th scope="col" class="text-center mb-3">Costo Actual</th>
+                                          <th scope="col" class="text-center mb-3">Año</th>
+                                          <th scope="col" class="text-center mb-3">Accion</th>
+                                    </tr>
+                              </thead>
+                              <tbody>
+                                    <tr *ngFor="let cripto of criptosVende">
+                                          <th class="text-center mb-3">{{cripto.nombre}}</th>
+                                          <th class="text-center mb-3">{{cripto.comision}}%</th>
+                                          <th class="text-center mb-3">USD {{cripto.costoActual}}</th>
+                                          <th class="text-center mb-3">{{cripto.ano}}</th>
+                                          <th class="text-center mb-3">
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                      data-bs-target="#exampleModal" (click)="sendDataToModal(cripto)">
+                                                      Comprar
+                                                </button>
+                                          </th>
+                                    </tr>
+                              </tbody>
+                        </table>
+                  </div>
+            </div>
+      </div>
+</main>
+<app-modal-compra [dataToCompra]="dataToModal"></app-modal-compra>

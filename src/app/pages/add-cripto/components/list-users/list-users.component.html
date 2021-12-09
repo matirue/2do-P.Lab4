@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<main @enterState>
+      <div class="container py-4">
+
+            <div class="p-5 mb-4 bg-light rounded-3">
+
+                  <h1 class="text-center mb-3">Lista de Usuarios</h1>
+
+                  <h6 class="mb-3">Filtrar por: </h6>
+                  <select #select (change)="valueSelect()" class="form-select" aria-label="Default select example">
+                        <option selected  value="todos">Todos</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Vendedor">Vendedor</option>
+                        <option value="Comprador">Comprador</option>
+                  </select>
+
+                  <div class="container-fluid py-5">
+                        <table class="table table-hover">
+                              <thead>
+                                    <tr>
+                                          <th scope="col" class="text-center mb-3">Ususario</th>
+                                          <th scope="col" class="text-center mb-3">Tipo de Usuario</th>
+                                          <th scope="col" class="text-center mb-3">Imagen de prefil</th>
+                                    </tr>
+                              </thead>
+                              <tbody>
+                                    <tr *ngFor="let user of users | filter:filterData">
+                                          <th class="text-center mb-3">{{user.email}}</th>
+                                          <th class="text-center mb-3">{{user.type}}</th>
+                                          <td class="text-center mb-3"><img src="{{user.photo}}" alt="" weight="70px" height="70px"></td>
+                                    </tr>
+                              </tbody>
+                        </table>
+                  </div>
+            </div>
+
+      </div>
+</main>

@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container-fluid">
+    <a class="py-2" (click)="redirect('home')" style="padding-left: 2%;">
+      <img src="./../../assets/letra-m.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+      aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Admin -->
+        <li class="nav-item active" *ngIf="user ==='Administrador'"><a class="nav-link" (click)="redirect('add')">
+          Cargar Cripto</a>
+        </li>
+        <li class="nav-item active" *ngIf="user ==='Administrador'"><a class="nav-link" (click)="redirect('listVend')">
+          Permisos Vendedores</a>
+        </li>
+        <li class="nav-item active" *ngIf="user ==='Administrador'"><a class="nav-link" (click)="redirect('listUser')">
+          Listados de Usuarios</a>
+        </li>
+
+        <!-- Vendedor -->
+        <li class="nav-item active" *ngIf="user ==='Vendedor'"><a class="nav-link" (click)="redirect('cripto')">
+          Vender Cripto</a></li>
+
+        <!-- Comprador -->
+        <li class="nav-item active" *ngIf="user ==='Comprador'"><a class="nav-link" (click)="redirect('compra')">
+          Comprar Cripto</a>
+        </li>
+      </ul>
+
+      <div class="text-end">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <i><a class="nav-link active" appEmail></a></i>
+          </li>
+          <li class="nav-item " *ngIf="user">
+            <a class="nav-link" (click)="signOut()">Cerrar Sesion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

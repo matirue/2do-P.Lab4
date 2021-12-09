@@ -1,0 +1,29 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Comprar Cripto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div [formGroup]="formGP" class="modal-body">
+                        <div class="col-12">
+
+                              <input type="number" class="form-control" formControlName="cantidad"
+                                    [ngClass]="{ 'is-invalid': form.cantidad.touched && form.cantidad.errors }"
+                                    placeholder="Cantidad">
+                              <div *ngIf="form.cantidad.touched && form.cantidad.errors" class="invalid-feedback">
+                                    <div *ngIf="form.cantidad.errors.required">Es requerido</div>
+                                    <div *ngIf="form.cantidad.errors.max">Solo se puede comprar un maximo de 99</div>
+                              </div>
+                        </div>
+
+
+                  </div>
+                  <div class="modal-footer">
+                        <button [disabled]="formGP.invalid" (click)="addCompra()" type="button"
+                              class="btn btn-danger">Comprar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Compra</button>
+                  </div>
+            </div>
+      </div>
+</div>

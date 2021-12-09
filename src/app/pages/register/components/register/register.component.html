@@ -1,0 +1,78 @@
+
+<div @enterState class="container">
+      <main>
+           
+
+            <div class="row m-4">
+                  <div class="col-12">
+                        <h1 class="text-center mb-3" style="color: brown;">Registro</h1>
+                        <form [formGroup]="registerForm" class="needs-validation">
+                              <div class="row g-3">
+                                    <div class="col-sm-6">
+                                          <label for="firstName" class="form-label" style="color: brown;">Correo</label>
+                                          <input type="email" formControlName="email" [ngClass]="{
+                                          'is-invalid': form.email.touched && form.email.errors
+                                          }" class="form-control" placeholder="" value="" required />
+                                          <div *ngIf="form.email.touched && form.email.errors" class="invalid-feedback">
+                                                <div *ngIf="form.email.errors.required">Es requerido</div>
+                                                <div *ngIf="form.email.errors.email">Invalido</div>
+                                          </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                          <label for="lastName" class="form-label" style="color: brown;">Constraseña</label>
+                                          <input type="password" formControlName="password" [ngClass]="{
+                                          'is-invalid': form.password.touched && form.password.errors
+                                          }" class="form-control" id="lastName" placeholder="" value="" required />
+                                          <div *ngIf="form.password.touched && form.password.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.password.errors.required">Es requerido</div>
+                                                <div *ngIf="form.password.errors.minlenght">
+                                                      minimo 6 caracteres
+                                                </div>
+                                          </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                          <label for="username" class="form-label" style="color: brown;">Tipo de Usuario</label>
+                                          <select class="form-select" aria-label="Default select example" [ngClass]="{
+                                          'is-invalid': form.type.touched && form.type.errors
+                                          }" formControlName="type">
+                                                <option selected value="Administrador">Administrador</option>
+                                                <option value="Comprador">Comprador</option>
+                                                <option value="Vendedor">Vendedor</option>
+                                          </select>
+                                          <div *ngIf="form.type.touched && form.type.errors" class="invalid-feedback">
+                                                <div *ngIf="form.type.errors.required">Es requerido</div>
+                                                <div *ngIf="form.type.errors.max">maximo 99999</div>
+                                          </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                          <label for="email" class="form-label" style="color: brown;">Imagen de perfil</label>
+                                          <input type="file"
+                                          (change)="photoValue($event)" class="form-control" 
+                                          [ngClass]="{'is-invalid': form.file.touched && form.file.errors
+                                          }" formControlName="file" placeholder="Stock" />
+                                          <div *ngIf="form.file.touched && form.file.errors" class="invalid-feedback">
+                                                <div *ngIf="form.file.errors.required">Es requerido</div>
+                                          </div>
+                                    </div>
+                              </div>
+                              <br>
+                              <button class="w-100 btn btn-danger btn-lg" type="submit"
+                                    [disabled]="registerForm.invalid" (click)="uploadFile()">
+                                    Registrarse
+                              </button>
+                        </form>
+
+                        <div class="text-center mt-2">
+                              <div class="form-group mt-3">
+                                  ¿Ya tienes una cuenta? <a (click)="redirect()"><strong style="color: brown;">Iniciar Sesión</strong></a>   
+                              </div>
+                          </div>
+                  </div>
+            </div>
+      </main>
+      
+</div>

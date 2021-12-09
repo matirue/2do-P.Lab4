@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/rmm2do-par",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

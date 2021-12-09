@@ -1,0 +1,46 @@
+<div  @enterState class="text-center">
+      <main class="form-signin">
+            <form [formGroup]="loginForm">
+
+                  <h1  style="color: brown;">Iniciar Sesión</h1>
+                  <div class="form-floating">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="ejemplo@ejemplo.com" formControlName="email"
+                        [ngClass]="{ 'is-invalid': form.email.touched && form.email.errors }" />
+                        <label for="floatingInput">Correo</label>
+                        <div *ngIf="form.email.touched && form.email.errors" class="invalid-feedback">
+                              <div *ngIf="form.email.errors.required">Es requerido</div>
+                              <div *ngIf="form.email.errors.email">Invalido</div>
+                        </div>   
+                  </div>
+                  <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" 
+                        [ngClass]="{ 'is-invalid': form.password.touched && form.password.errors }" formControlName="password" />
+                        <label for="floatingPassword">Contraseña</label>
+                        <div *ngIf="form.password.touched && form.password.errors" class="invalid-feedback">
+                              <div *ngIf="form.password.errors.required">Es requerido</div>
+                              <div *ngIf="form.password.errors.mxlength">Tiene que tener como minimo 6 caracteres</div>
+                        </div>
+                  </div>
+
+                  
+
+                  <button class="w-100 btn btn-lg btn-success mt-2" type="button" [disabled]="loginForm.invalid" (click)="signIn()">
+                        Iniciar Sesión
+                  </button>
+                  <br><br>
+                  <button class="w-100 btn btn-lg btn-danger mt-2" type="button" (click)="fastAccess('admin')">
+                        Ingresar como Admin
+                  </button>
+                  <button class="w-100 btn btn-lg btn-danger mt-2" type="button" (click)="fastAccess('vendedor')">
+                        Ingresar como Vendedor1
+                  </button>
+                  <button class="w-100 btn btn-lg btn-danger mt-2" type="button" (click)="fastAccess('comprador')">
+                        Ingresar como Comprador1
+                  </button>
+                  <br><br>
+                  <div class="form-floating">
+                        ¿No tienes cuenta? <a (click)="redirect()"><strong style="color: brown;">Registrarse</strong></a>  
+                  </div>
+            </form>
+      </main>
+</div>

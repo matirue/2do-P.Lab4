@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<main @enterState>
+      <div class="container py-4">
+            <div class="p-5 mb-4 bg-light rounded-3">
+                  <h1 class="text-center mb-3">Lista de vendedores</h1>
+                  <table class="table table-hover">
+                        <thead>
+                              <tr>
+                                    <th scope="col" class="text-center mb-3">Vendedor</th>
+                                    <th scope="col" class="text-center mb-3">Foto</th>
+                                    <th scope="col" class="text-center mb-3">Habilitado</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                              <tr *ngFor="let user of users">
+                                    <th class="text-center mb-3">
+                                          {{user.email}}
+                                    </th>
+                                    <th class="text-center mb-3">
+                                          <img src="{{user.photo}}" alt="" weight="70px" height="70px">
+                                    </th>
+                                    <th class="text-center mb-3">
+                                          <div class="form-check" class="text-center mb-3">
+                                                <input *ngIf="user.habilitado" type="checkbox" (change)="enableValue($event, user)" 
+                                                class="form-check-input" id="save-info" checked>
+                                                <input *ngIf="!user.habilitado" type="checkbox" (change)="enableValue($event, user)" 
+                                                class="form-check-input"  id="save-info">
+                                                <label class="form-check-label" for="save-info"></label>
+                                          </div>
+                                    </th>
+                              </tr>
+                        </tbody>
+                  </table>
+
+            </div>
+      </div>
+</main>
